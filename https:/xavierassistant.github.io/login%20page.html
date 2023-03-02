@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login - My Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <style>
+    body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  background-color: #ff98bf;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #ff98bf;
+  color: black;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff6bae;
+}
+
+p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+a {
+  color: #ff98bf;
+  text-decoration: none;
+}
+
+  </style>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="chatbot 1.html">Home</a></li>
+        <li><a href="test 4.html">Settings</a></li>
+        <li><a href="help and support page.html">Help &amp; Support</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h1>Login</h1>
+
+      <form action="#" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <p>Don't have an account? <a href="sign up page.html">Sign up</a></p>
+    </div>
+  </body>
+</html>
