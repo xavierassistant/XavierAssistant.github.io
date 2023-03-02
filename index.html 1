@@ -4,91 +4,108 @@
   <head>
     <title>My Voice Flow Chatbot - Settings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <style>
-      body {
-  background-color: black;
-  color: white;
-  font-family: Arial, sans-serif;
+body {
+background-color: #1c1c1c;
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
 }
 
-nav {
-  background-color: #ff98bf;
-  font-weight: bold;
-  padding: 10px;
-  margin-bottom: 20px;
+#container {
+display: flex;
+height: 100vh;
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+#nav {
+background-color: #6f42c1;
+color: #fff;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 10px;
+width: 10%;
+transition: all 0.3s ease;
 }
 
-nav li {
-  display: inline-block;
-  margin-right: 20px;
+#nav.collapsed {
+width: 60px;
+justify-content: space-between;
 }
 
-nav a {
-  color: black;
-  text-decoration: none;
-  padding: 5px;
+#nav.collapsed button {
+display: none;
 }
 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #333;
-  border-radius: 10px;
+#nav.collapsed #settings-button {
+display: block;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+#nav button {
+background-color: #fff;
+border: none;
+border-radius: 5px;
+color: #6f42c1;
+cursor: pointer;
+font-size: 16px;
+margin-bottom: 10px;
+padding: 10px;
+width: 100%;
 }
 
-label {
-  margin-bottom: 5px;
+#nav #settings-button {
+background-color: transparent;
+border: none;
+color: #fff;
+cursor: pointer;
+font-size: 16px;
+margin-bottom: 10px;
+padding: 10px;
+width: 100%;
+display: none;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
+#chatbot-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 90%;
 }
 
-button[type="submit"] {
-  background-color: #ff98bf;
-  color: black;
-  font-size: 18px;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+#chatbot-iframe {
+border: none;
+height: 800px;
+width: 1200px;
 }
 
-button[type="submit"]:hover {
-  background-color: #ff6bae;
+@media screen and (max-width: 768px) {
+#nav {
+width: 60px;
+justify-content: space-between;
 }
 
-p {
-  margin-top: 20px;
-  text-align: center;
+#nav button {
+display: none;
 }
 
-a {
-  color: #ff98bf;
-  text-decoration: none;
+#nav #settings-button {
+display: block;
 }
 
+#chatbot-container {
+width: 100%;
+}
 
-    </style>
+#chatbot-iframe {
+height: 600px;
+width: 800px;
+}
+}
+
+</style>   
   </head>
   <body>
     <nav>
