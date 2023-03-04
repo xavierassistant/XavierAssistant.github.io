@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog Website</title>
+  <title>PublishPortal</title>
   <style>
     /* Style for the ad area */
     .ad {
@@ -133,10 +132,18 @@
     .new-blog-post button:hover {
       background-color: #333;
     }
+
+    .search-form {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+}
+
   </style>
 </head>
-
 <body>
+  
   <!-- Navbar -->
   <nav class="navbar">
     <a href="#" data-topic="all">All</a>
@@ -146,12 +153,13 @@
     <a href="#" data-topic="food">Food</a>
     <a href="#" data-topic="travel">Travel</a>
     <a href="#" data-topic="fashion">Fashion</a>
+    <a href="AD here page1.html" data-topic="ADVERTISE">ADVERTISE WITH US</a>
     <a href="#" class="menu">&#9776;</a>
   </nav>
 
-  <!-- Ad area -->
+ <!-- Ad area -->
 <div class="ad">
-    <h2>Ad Area</h2>
+    <h2>To advertise with us please get in touch:</h2>
     <a href="https://mailchimp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmEikru9ABnGU4Egf-XcGVglLxK2ZpxtNjEZQsKf2TwU9u_Z-muT-75-Kie1QrGaNWRI&usqp=CAU" alt="Mailchimp Ad"></a>
     <a href="https://mailchimp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmEikru9ABnGU4Egf-XcGVglLxK2ZpxtNjEZQsKf2TwU9u_Z-muT-75-Kie1QrGaNWRI&usqp=CAU" alt="Mailchimp Ad"></a>
     <a href="https://mailchimp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmEikru9ABnGU4Egf-XcGVglLxK2ZpxtNjEZQsKf2TwU9u_Z-muT-75-Kie1QrGaNWRI&usqp=CAU" alt="Mailchimp Ad"></a>
@@ -159,9 +167,9 @@
   
 
   <!-- Blog post area -->
-  <div class="blog-posts">
-    <h2>Latest Posts</h2>
-    <div id="blog-post-list"></div>
+<div class="blog-posts">
+  <h2>Latest Posts</h2>
+  <div id="blog-post-list"></div>
   </div>
 
   <!-- Form to create new blog posts -->
@@ -253,6 +261,13 @@ blogPosts = [
     topic: 'technology',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ante ac odio dictum varius. Etiam quis dolor vitae enim auctor dictum. Aliquam vel elit euismod, commodo odio sed, tristique lacus. Donec eu ante nisi. ',
     date: '3/4/2023'
+  },
+  {
+    title: '10 Best Travel Destinations for 2023',
+    author: 'Jane Smith',
+    topic: 'travel',
+    content: 'Phasellus auctor tristique ligula, eget maximus ante pulvinar at. Nullam ac risus libero. Praesent et risus in justo bibendum suscipit. Integer laoreet orci nunc, at rhoncus est pharetra sed.',
+    date: '3/3/2023'
   },
   {
     title: '10 Best Travel Destinations for 2023',
