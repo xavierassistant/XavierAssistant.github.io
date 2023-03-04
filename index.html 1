@@ -1,180 +1,295 @@
-<h1>Hello!</h1>
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Voice Flow Chatbot - Settings</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <style>
-body {
-background-color: #1c1c1c;
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Website</title>
+  <style>
+    /* Style for the ad area */
+    .ad {
+      width: 300px;
+      height: 600px;
+      background-color: #f2f2f2;
+      float: right;
+    }
+
+    /* Style for the navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      background-color: black;
+      color: white;
+      overflow: auto;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .navbar a {
+      display: block;
+      padding: 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #555;
+    }
+
+    .navbar .menu {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        width: 0;
+      }
+
+      .navbar a {
+        padding: 10px;
+      }
+
+      .navbar .menu {
+        display: block;
+        float: right;
+      }
+
+      .navbar.show {
+        width: 100%;
+      }
+    }
+
+    /* Style for the blog post area */
+    .blog-posts {
+      margin-left: 220px;
+      padding-top: 50px;
+    }
+
+    .blog-posts h2 {
+      font-size: 24px;
+    }
+
+    .blog-posts .blog-post {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    .blog-posts .blog-post h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .blog-posts .blog-post p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Style for the form to create new blog posts */
+    .new-blog-post {
+      margin-left: 220px;
+      margin-top: 50px;
+    }
+
+    .new-blog-post label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .new-blog-post input[type="text"],
+    .new-blog-post textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .new-blog-post select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .new-blog-post button {
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: none;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    .new-blog-post button:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" data-topic="all">All</a>
+        <a href="#" data-topic="technology">Technology</a>
+    <a href="#" data-topic="lifestyle">Lifestyle</a>
+    <a href="#" data-topic="entertainment">Entertainment</a>
+    <a href="#" data-topic="food">Food</a>
+    <a href="#" data-topic="travel">Travel</a>
+    <a href="#" data-topic="fashion">Fashion</a>
+    <a href="#" class="menu">&#9776;</a>
+  </nav>
+
+  <!-- Ad area -->
+<div class="ad">
+    <h2>Ad Area</h2>
+
+   </div>
+  
+
+  <!-- Blog post area -->
+  <div class="blog-posts">
+    <h2>Latest Posts</h2>
+    <div id="blog-post-list"></div>
+  </div>
+
+  <!-- Form to create new blog posts -->
+  <div class="new-blog-post">
+    <h2>Create New Blog Post</h2>
+    <form>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author" required>
+
+      <label for="topic">Topic</label>
+      <select id="topic" name="topic" required>
+        <option value="" disabled selected>Select a topic</option>
+        <option value="technology">Technology</option>
+        <option value="lifestyle">Lifestyle</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="fashion">Fashion</option>
+      </select>
+
+      <label for="content">Content</label>
+      <textarea id="content" name="content" rows="10" required></textarea>
+
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const blogPostList = document.getElementById('blog-post-list');
+    const form = document.querySelector('form');
+    const submitBtn = document.getElementById('submit-btn');
+    const navbar = document.querySelector('.navbar');
+    const menuBtn = document.querySelector('.menu');
+
+    let blogPosts = [];
+
+    function renderBlogPosts(posts) {
+      let html = '';
+      posts.forEach(post => {
+        html += `
+          <div class="blog-post">
+            <h3>${post.title}</h3>
+            <p>By ${post.author} | ${post.date} | ${post.topic}</p>
+            <p>${post.content}</p>
+          </div>
+        `;
+      });
+      blogPostList.innerHTML = html;
+    }
+
+    function filterBlogPosts(topic) {
+      if (topic === 'all') {
+        renderBlogPosts(blogPosts);
+      } else {
+        const filteredPosts = blogPosts.filter(post => post.topic === topic);
+        renderBlogPosts(filteredPosts);
+      }
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const author = document.getElementById('author').value;
+      const topic = document.getElementById('topic').value;
+      const content = document.getElementById('content').value;
+      const date = new Date().toLocaleDateString
+        const newPost = {
+    title,
+    author,
+    topic,
+    content,
+    date
+  };
+  blogPosts.unshift(newPost);
+  renderBlogPosts(blogPosts);
+  form.reset();
 }
 
-#container {
-display: flex;
-height: 100vh;
-}
+form.addEventListener('submit', handleSubmit);
 
-#nav {
-background-color: #6f42c1;
-color: #fff;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 10px;
-width: 10%;
-transition: all 0.3s ease;
-}
+// Mock data
+blogPosts = [
+  {
+    title: 'The Future of Technology',
+    author: 'John Doe',
+    topic: 'technology',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet ante ac odio dictum varius. Etiam quis dolor vitae enim auctor dictum. Aliquam vel elit euismod, commodo odio sed, tristique lacus. Donec eu ante nisi. ',
+    date: '3/4/2023'
+  },
+  {
+    title: '10 Best Travel Destinations for 2023',
+    author: 'Jane Smith',
+    topic: 'travel',
+    content: 'Phasellus auctor tristique ligula, eget maximus ante pulvinar at. Nullam ac risus libero. Praesent et risus in justo bibendum suscipit. Integer laoreet orci nunc, at rhoncus est pharetra sed.',
+    date: '3/3/2023'
+  },
+  {
+    title: 'Healthy Eating Habits for a Better Lifestyle',
+    author: 'James Williams',
+    topic: 'food',
+    content: 'Nam tempor, metus nec pharetra aliquam, nunc nulla gravida sapien, ac dapibus velit enim in diam. Integer tristique nunc eu ante congue, id aliquam nunc imperdiet. Aliquam vestibulum mauris eu massa ultricies dapibus.',
+    date: '3/2/2023'
+  },
+  {
+    title: 'The Latest Fashion Trends',
+    author: 'Sarah Lee',
+    topic: 'fashion',
+    content: 'Aenean pharetra dui ut quam malesuada volutpat. Vivamus pellentesque enim at nunc euismod, eget rhoncus magna malesuada. Fusce quis consectetur dolor. Sed eu tincidunt sapien, id molestie ipsum.',
+    date: '3/1/2023'
+  }
+];
 
-#nav.collapsed {
-width: 60px;
-justify-content: space-between;
-}
+renderBlogPosts(blogPosts);
 
-#nav.collapsed button {
-display: none;
-}
+// Filter blog posts by topic
+const topicLinks = document.querySelectorAll('[data-topic]');
+topicLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const topic = link.dataset.topic;
+    filterBlogPosts(topic);
+  });
+});
 
-#nav.collapsed #settings-button {
-display: block;
-}
-
-#nav button {
-background-color: #fff;
-border: none;
-border-radius: 5px;
-color: #6f42c1;
-cursor: pointer;
-font-size: 16px;
-margin-bottom: 10px;
-padding: 10px;
-width: 100%;
-}
-
-#nav #settings-button {
-background-color: transparent;
-border: none;
-color: #fff;
-cursor: pointer;
-font-size: 16px;
-margin-bottom: 10px;
-padding: 10px;
-width: 100%;
-display: none;
-}
-
-#chatbot-container {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 90%;
-}
-
-#chatbot-iframe {
-border: none;
-height: 800px;
-width: 1200px;
-}
-
-@media screen and (max-width: 768px) {
-#nav {
-width: 60px;
-justify-content: space-between;
-}
-
-#nav button {
-display: none;
-}
-
-#nav #settings-button {
-display: block;
-}
-
-#chatbot-container {
-width: 100%;
-}
-
-#chatbot-iframe {
-height: 600px;
-width: 800px;
-}
-}
-
-</style>   
-  </head>
-  <body>
-    <nav>
-        <ul>
-        <li><a href="chatbot 1.html">Home</a></li>
-        <li><a href="test 4.html">Settings</a></li>
-        <li><a href="help and support page.html">Help &amp; Support</a></li>
-        </ul>
-        </nav>
-    <div id="container">
-      <h1>Settings</h1>
-
-      <div class="section">
-        <h2>User Preferences</h2>
-        <p>Customize your chatbot's behavior and appearance to better suit your needs.</p>
-        <form>
-          <label for="name">Chatbot Name:</label>
-          <input type="text" id="name" name="name" placeholder="Your chatbot's name">
-
-          <label for="language">Language:</label>
-          <input type="text" id="language" name="language" placeholder="Your chatbot's language">
-
-          <label for="accent">Accent:</label>
-          <input type="text" id="accent" name="accent" placeholder="Your chatbot's accent">
-
-          <label for="volume">Volume:</label>
-          <input type="range" id="volume" name="volume" min="0" max="100" value="50">
-        </form>
-      </div>
-
-      <div class="section">
-        <h2>Data Privacy</h2>
-        <p>Control how your data is collected, stored, and used
-
-
-        <ul>
-          <li>
-            <label>
-              <input type="checkbox" name="analytics" value="on" checked> Allow analytics data to be collected
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="personalization" value="on" checked> Allow personalized content recommendations
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="thirdparty" value="on" checked> Allow third-party services to access my data
-            </label>
-          </li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>Help and Support</h2>
-        <p>Get help with using your chatbot and provide feedback to improve your experience.</p>
-        <ul>
-          <li>
-            <a href="FAQs page.html">FAQs</a>
-          </li>
-          <li>
-            <a href="contact us page.html">Contact Us</a>
-          </li>
-          <li>
-            <a href="report a bug.html">Report a Bug</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </body>
+// Collapse navbar on smaller screens
+menuBtn.addEventListener('click', () => {
+  navbar.classList.toggle('collapsed');
+});
+</script>
+</body>
 </html>
