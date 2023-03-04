@@ -149,11 +149,13 @@
     <a href="#" class="menu">&#9776;</a>
   </nav>
 
-  <!-- Ad area -->
+ <!-- Ad area -->
 <div class="ad">
     <h2>Ad Area</h2>
-
-   </div>
+    <a href="https://mailchimp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmEikru9ABnGU4Egf-XcGVglLxK2ZpxtNjEZQsKf2TwU9u_Z-muT-75-Kie1QrGaNWRI&usqp=CAU" alt="Mailchimp Ad"></a>
+    <a href="https://mailchimp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmEikru9ABnGU4Egf-XcGVglLxK2ZpxtNjEZQsKf2TwU9u_Z-muT-75-Kie1QrGaNWRI&usqp=CAU" alt="Mailchimp Ad"></a>
+    <a href="https://mailchimp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmEikru9ABnGU4Egf-XcGVglLxK2ZpxtNjEZQsKf2TwU9u_Z-muT-75-Kie1QrGaNWRI&usqp=CAU" alt="Mailchimp Ad"></a>
+  </div>
   
 
   <!-- Blog post area -->
