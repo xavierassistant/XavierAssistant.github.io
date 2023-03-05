@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PublishPortal</title>
   <style>
+  /* Default styles for all devices */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Media query for smaller devices */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Media query for even smaller devices */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}
+
     /* Style for the ad area */
     .ad {
       width: 300px;
